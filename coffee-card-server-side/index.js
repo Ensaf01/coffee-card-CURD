@@ -34,11 +34,21 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-
+    //database of mongodb 
+    const coffeeCollection = client.db("CoffeeDB").collection("coffeex");//CoffeeDB db name
+    
+app.get('/coffees',async(req,res)=>{
+  
+  const cursor=coffeeCollection.find() // find all data
+  const result=await cursor.toArray();
+  res.send(result)
+})
 //post
 app.post('/coffees',async(req,res)=>{
     const newCoffe=req.body
     console.log(newCoffe);
+    const result=await coffeeCollection.insertOne(newCoffe) // client theke asa newcoffee DB te insert korbo
+    res.send(result)//client ke res korbo with result
 })
 
     // Send a ping to confirm a successful connection
