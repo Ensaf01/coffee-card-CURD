@@ -23,7 +23,10 @@ const AddCoffee = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data) // server to response and data store
+                console.log(data) // true or 1 something show, server to response and data store
+                if(data.insertedId){
+                    alert('add coffee in DB') // we can here use sweet alert
+                }
             })
 
 
