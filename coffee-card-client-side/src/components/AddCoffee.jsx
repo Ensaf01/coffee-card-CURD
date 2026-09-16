@@ -27,6 +27,7 @@ const AddCoffee = () => {
                 if(data.insertedId){
                     alert('add coffee in DB') // we can here use sweet alert
                 }
+                form.reset();
             })
 
 

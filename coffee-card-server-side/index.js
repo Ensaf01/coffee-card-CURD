@@ -14,11 +14,11 @@ const port =process.env.PORT || 5000;
 
 
 // CHECK the name and pass
-// console.log(process.env.SET_NAME)
-// console.log(process.env.SET_PASS)
+console.log(process.env.SET_NAME)
+ console.log(process.env.SET_PASS)
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.SET_NAME}:${process.env.SET_PASS}@cluster0.4vpj6z9.mongodb.net/?appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -49,6 +49,13 @@ app.post('/coffees',async(req,res)=>{
     console.log(newCoffe);
     const result=await coffeeCollection.insertOne(newCoffe) // client theke asa newcoffee DB te insert korbo
     res.send(result)//client ke res korbo with result
+})
+
+app.delete('/coffees/id',async(req,res)=>{
+    const id=req.params.id;
+    const query={_id: new ObjectId(id)}
+    const result =await coffeeCollection.deleteOne(query)
+    res.send(result)
 })
 
     // Send a ping to confirm a successful connection
