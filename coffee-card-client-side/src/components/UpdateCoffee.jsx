@@ -2,8 +2,11 @@ import { useLoaderData } from "react-router-dom";
 
 
 const UpdateCoffee = () => {
+    
     const coffee=useLoaderData();
     const {_id, name, supplier, chef, taste, category, photo }=coffee;
+
+
     const handleUpdate = event => {
         event.preventDefault();
         const form = new FormData(event.currentTarget)

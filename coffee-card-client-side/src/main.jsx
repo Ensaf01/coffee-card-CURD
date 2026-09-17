@@ -17,6 +17,7 @@ const router = createBrowserRouter([
     path:'/addCoffee',
     element:<AddCoffee></AddCoffee>
   },
+  
   {
     path:'/updateCoffee/:id',
     element:<UpdateCoffee></UpdateCoffee>,
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
     path:'/coffee',
     element:<Coffee></Coffee>
   }
+  
 ]);
 
 

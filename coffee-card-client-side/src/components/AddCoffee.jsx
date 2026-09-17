@@ -3,13 +3,14 @@
 const AddCoffee = () => {
     const handleAddCoffee = event => {
         event.preventDefault();
-        const form = new FormData(event.currentTarget)
-        const name = form.get('Name');
-        const chef = form.get('Chef');
-        const supplier = form.get('Supplier');
-        const taste = form.get('Taste');
-        const category = form.get('Category');
-        const photo = form.get('Photo');
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+        const name = formData.get('Name');
+        const chef = formData.get('Chef');
+        const supplier = formData.get('Supplier');
+        const taste = formData.get('Taste');
+        const category = formData.get('Category');
+        const photo = formData.get('Photo');
         const newCoffee = { name, supplier, chef, taste, category, photo }
         console.log(newCoffee)
         // send data to server
@@ -26,8 +27,9 @@ const AddCoffee = () => {
                 console.log(data) // true or 1 something show, server to response and data store
                 if(data.insertedId){
                     alert('add coffee in DB') // we can here use sweet alert
+                    form.reset();
                 }
-                form.reset();
+                
             })
 
 
